@@ -192,7 +192,8 @@ const end=new Date(r.holdExpires.replace(' ','T')+':00+08:00').getTime();clearIn
 const tick=()=>{const s=Math.floor((end-Date.now())/1e3);if(s<=0){$('#cd').textContent=t('exp');clearInterval(tmr);return}
 const p=n=>String(n).padStart(2,'0');$('#cd').textContent=`${p(Math.floor(s/3600))}:${p(Math.floor(s%3600/60))}:${p(s%60)}`};tick();tmr=setInterval(tick,1e3)}
 document.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
-['#q','#fl','#fd','#ft'].forEach(s=>$(s).addEventListener('input',render));\n['#fl','#fd','#ft'].forEach(s=>$(s).addEventListener('change',render));
+['#q','#fl','#fd','#ft'].forEach(s=>$(s).addEventListener('input',render));
+['#fl','#fd','#ft'].forEach(s=>$(s).addEventListener('change',render));
 try{const v=localStorage.getItem('nht');if(v)document.documentElement.dataset.theme=v}catch(e){}
 $('#th').onclick=()=>{const d=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'),n=d=='dark'?'light':'dark';document.documentElement.dataset.theme=n;try{localStorage.setItem('nht',n)}catch(e){}};
 setLang(lang);load();
